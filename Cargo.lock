@@ -3,16 +3,6 @@
 version = 3
 
 [[package]]
-name = "GameOfLife"
-version = "0.1.0"
-dependencies = [
- "piston",
- "piston2d-graphics",
- "piston2d-opengl_graphics",
- "pistoncore-glutin_window",
-]
-
-[[package]]
 name = "ab_glyph"
 version = "0.2.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -359,6 +349,16 @@ name = "foreign-types-shared"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b"
+
+[[package]]
+name = "gameoflife"
+version = "0.1.0"
+dependencies = [
+ "piston",
+ "piston2d-graphics",
+ "piston2d-opengl_graphics",
+ "pistoncore-glutin_window",
+]
 
 [[package]]
 name = "gif"

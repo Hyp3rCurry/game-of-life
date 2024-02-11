@@ -1,6 +1,6 @@
 
 use piston::window::WindowSettings;
-use piston::event_loop;
+//use piston::event_loop;
 use piston::input::*;
 use glutin_window::GlutinWindow;
 use graphics::rectangle;
@@ -18,7 +18,6 @@ struct Game {
     gl: GlGraphics,
 }
 
-#[derive(Default)]
 struct Rect {
     x: f64,
     y: f64,
@@ -28,7 +27,6 @@ struct Rect {
 
 impl Game {
     fn render (&mut self, arg: &RenderArgs, rects : &Vec<Vec<Rect>>) {
-        use graphics;
 
         self.gl.draw(arg.viewport(), |_c, gl| {
             graphics::clear(BLACK, gl);
@@ -57,7 +55,7 @@ fn generate_rects() -> Vec<Vec<Rect>>{
             let y: f64 = f64::from(i) * SIZE;
 
             let color;
-            if j % 2 == 0 && i %2 == 0 {
+            if j % 2 == 0 && i % 2 == 0 {
                 color = WHITE;
             }
             else {
