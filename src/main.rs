@@ -121,10 +121,14 @@ fn change_state(neighbours:i32, rect: &mut Rect) {
     }
 }
 
-fn paint(pos:[f64; 2], rects: &Vec<Vec<Rect>>) {
+fn paint(pos:[f64; 2], rects: &mut Vec<Vec<Rect>>) {
+    let x = (pos[1]/SIZE) as usize;
+    let y = (pos[0]/SIZE) as usize;
 
-
-    //rects[pos[0]][pos[1]].color = WHITE;
+    rects[x][y].color = WHITE;
+    rects[x+1][y].color = WHITE;
+    rects[x][y+1].color = WHITE;
+    rects[x+1][y+1].color = WHITE;
 }
 
 fn main() {
@@ -146,14 +150,14 @@ fn main() {
 
 
     let mut events = Events::new(EventSettings::new());
-    events.set_max_fps(1);
+    let mut cursor: [f64;2] = [0.0,0.0];
+    let mut last_cursor = cursor;
+    events.set_max_fps(10);
     while let Some(e) = events.next(&mut window) {
         //mouse input
-        let cursor =  match e.mouse_cursor(|pos| {
-            pos}) {
-            Some(e) => e,
-            None => [0.0, 0.0],
-        };
+
+        cursor = e.mouse_cursor(|pos| { pos }).unwrap_or_else(|| last_cursor);
+        last_cursor = cursor;
 
         if let Some(button) = e.press_args() {
             match button {
